@@ -1,5 +1,6 @@
 package hello.typeconverter.controller;
 
+import hello.typeconverter.type.IpPort;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +17,16 @@ public class HelloController {
         return "ok";
     }
 
-    @GetMapping("/hello-v2")
+    @GetMapping("/hello-v2") // 근데 스프링에서는 내부 컨버터를 제공함
     public String helloV2(@RequestParam Integer data){
         System.out.println("data = "+ data);
+        return "ok";
+    }
+
+    @GetMapping("/ip-port")
+    public String ipPort(@RequestParam IpPort ipPort){
+        System.out.println("ipPort IP = " + ipPort);
+        System.out.println("ipPort PORT = " + ipPort.getPort());
         return "ok";
     }
 }
