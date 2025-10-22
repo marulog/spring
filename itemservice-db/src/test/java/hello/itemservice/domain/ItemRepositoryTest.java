@@ -43,7 +43,7 @@ class ItemRepositoryTest {
     @Test
     void updateItem() {
         //given
-        Item item = new Item("item1", 10000, 10);
+        Item item = new Item("item2", 10000, 10);
         Item savedItem = itemRepository.save(item);
         Long itemId = savedItem.getId();
 
