@@ -16,7 +16,8 @@ import javax.sql.DataSource;
 //@Import(MemoryConfig.class) // 설정 파일로 사용
 //@Import(JdbcTemplateV1Config.class)
 //@Import(JdbcTemplateV2Config.class)
-@Import(JdbcTemplateV3Config.class)
+//@Import(JdbcTemplateV3Config.class)
+@Import(MyBatisConfig.class)
 @SpringBootApplication(scanBasePackages = "hello.itemservice.web") // 해당 범위에서만 스캔 진행, 나머지는 수동 빈 등록
 public class ItemServiceApplication {
 
