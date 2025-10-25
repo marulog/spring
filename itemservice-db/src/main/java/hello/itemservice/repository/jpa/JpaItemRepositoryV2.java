@@ -17,10 +17,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class JpaItemRepositoryV2 implements ItemRepository {
 
-   private final SpringDataJpaItemRepository repository;
+   private final SpringDataJpaItemRepository repository; // 의존성 주입
+    // 인터페이스인데 프록시가 대리 객체 생성해줌
 
     @Override
-    public Item save(Item item) {
+    public Item save(Item item) { // Spirng data JPA의 기본 제공
        return repository.save(item);
     }
 
