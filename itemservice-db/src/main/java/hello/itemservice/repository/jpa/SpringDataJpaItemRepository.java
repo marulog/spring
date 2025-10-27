@@ -9,6 +9,17 @@ import java.util.List;
 
 // <a, b> a: 사용할 객체, b: 해당 객체의 PK 타입
 public interface SpringDataJpaItemRepository extends JpaRepository<Item, Long> {
+//extends 받는거라서 기본 기능들은 알아서 제공
+    // JPARepository 인터페이르르 상속받으면 스프링 데이터 JPA가 프록시 기술
+    //을 사용하여 구현 클래스를 만들어주고, 구현 클래스의 인스턴스를 만들어서
+    // 스프링 빈으로 등록함
+
+    // jpa 자체는 자바 진영의 대표적인 ORM으로 구현체로 hiberante를 사용함
+    // 이를 사용하면 객체에 대한 신경을 많이 써야됨
+    // @Entity -> JPA가 사용하는 객체 -> JPA가 해당 클래스를 객체라고인식
+    //@Colum -> 보통 객체는 카멜, DB는 언더스코어를 씀 -> 알아서 변환해주는거
+    // JPA의 모든 동작은 엔티니 매니저를 통해 이루어지고, 엔티티 매너저의
+    // 내부에는 데이터 소스를 가지고 있어서 해당 소스로 데이터베이스에 접근
 
     List<Item> findByItemNameLike(String itemName);
 

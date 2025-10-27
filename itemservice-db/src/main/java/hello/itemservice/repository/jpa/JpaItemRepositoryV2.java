@@ -19,6 +19,9 @@ public class JpaItemRepositoryV2 implements ItemRepository {
 
    private final SpringDataJpaItemRepository repository; // 의존성 주입
     // 인터페이스인데 프록시가 대리 객체 생성해줌
+    // 이제 엔티티 매니저를 통해서 crud를 사용하지 않음
+    // JPARepository인터페이스는
+    // 다양한 공통화된 기능을 모두 제공함
 
     @Override
     public Item save(Item item) { // Spirng data JPA의 기본 제공
@@ -46,9 +49,9 @@ public class JpaItemRepositoryV2 implements ItemRepository {
 
         if(StringUtils.hasText(itemName) && maxPrice != null){
 //            return repository.findByItemNameLikeAndPriceLessThanEqual(itemName, maxPrice);
-            return repository.findItems(itemName, maxPrice);
+            return repository.findItems("%" + itemName + "%", maxPrice);
         } else if(StringUtils.hasText(itemName)) {
-            return repository.findByItemNameLike(itemName);
+            return repository.findByItemNameLike("%" + itemName + "%");
         } else if (maxPrice != null) {
             return repository.findByPriceLessThanEqual(maxPrice);
         } else {
